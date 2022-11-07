@@ -1,3 +1,4 @@
+// Trivial solutionlllllllllllllllll;;;;;;;;;;;;;
 function binarySearch(arr, element) {
   const sortedArr = arr.sort((a, b) => a - b);
   let start = 0;
@@ -15,23 +16,34 @@ function binarySearch(arr, element) {
   }
   return -1;
 }
-
 // console.log(binarySearch([3, 5, 6, 7, 89, 1, 0], 89));
 
-function recursiveBinarySearch(key, arr) {
-  const sortedArr = arr.sort((a, b) => a - b);
-
-  let mid = Math.floor(sortedArr.length / 2);
-  if (sortedArr.length === 1 && sortedArr[0] !== key) {
+function recursiveBinarySearch(arr, value) {
+  if (!arr.length) {
     return -1;
   }
-  if (sortedArr[mid] === key) {
-    return mid;
-  } else if (key < sortedArr[mid]) {
-    return recursiveBinarySearch(key, sortedArr.slice(0, mid));
-  } else if (key > sortedArr[mid]) {
-    return recursiveBinarySearch(key, sortedArr.slice(mid));
+
+  let midIndex = Math.floor(arr.length - 1 / 2);
+
+  if (value === arr[midIndex]) return midIndex;
+
+  if (value > arr[midIndex]) {
+    return recursiveBinarySearch(arr.slice(midIndex + 1), value);
+  }
+  if (value < arr[midIndex]) {
+    return recursiveBinarySearch(arr.slice(0, midIndex), value);
   }
 }
+console.log(recursiveBinarySearch([1, 2, 3, 4, 5, 6, 7, 8, 9], 4));
 
-console.log(recursiveBinarySearch(3, [3, 5, 6, 7, 89, 1, 0]));
+function binaryRecursion(arr, val) {
+  if (arr.length === 0) return -1;
+  let middle = Math.floor(arr.length - 1 / 2);
+  if (arr[middle] === val) return middle;
+  if (val > arr[middle]) {
+    return binaryRecursion(arr.slice(middle + 1), val);
+  }
+  if (val < arr[middle]) {
+    return binaryRecursion(arr.slice(0, middle), val);
+  }
+}
