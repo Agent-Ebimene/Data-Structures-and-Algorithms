@@ -34,16 +34,22 @@ function recursiveBinarySearch(arr, value) {
     return recursiveBinarySearch(arr.slice(0, midIndex), value);
   }
 }
-console.log(recursiveBinarySearch([1, 2, 3, 4, 5, 6, 7, 8, 9], 4));
 
-function binaryRecursion(arr, val) {
-  if (arr.length === 0) return -1;
-  let middle = Math.floor(arr.length - 1 / 2);
-  if (arr[middle] === val) return middle;
-  if (val > arr[middle]) {
-    return binaryRecursion(arr.slice(middle + 1), val);
+//optimize the function without javascript slice function
+
+function binaryRecursion(arr, val, start = 0, stop = arr.length - 1) {
+  let midPoint = (start + stop) / 2;
+  if (start > stop) {
+    return false;
   }
-  if (val < arr[middle]) {
-    return binaryRecursion(arr.slice(0, middle), val);
+  if (val === arr[midPoint]) {
+    return midPoint;
+  } else {
+    if (val > arr[midPoint]) {
+      return binaryRecursion(arr, val, midPoint + 1, stop);
+    } else {
+      return binaryRecursion(arr, val, start, midPoint - 1);
+    }
   }
 }
+console.log(binaryRecursion([1, 2, 3, 4, 5, 6, 7, 8], 6));
