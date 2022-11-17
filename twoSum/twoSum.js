@@ -1,9 +1,15 @@
-//Every input has one solution means the array cannot be empty and we don't need to write conditions for where there is no solution
-//funtion receives an array of integers and a target
-//Create an object to store the difference between target and array elements whose values will be their indices.
-//check weather the element's complement is already in the object
-//If not, continue
-//if it is return an array of the value of the element and the index where that occurs.
+// create an object to store array values and indices
+// store the current element in the object
+// create a variable called difference
+// check if diff.is in object
+// if no,continue iteration
+// if yes return the value of diff and the current index.
+
+// OR
+// Create an object
+// check if the array value is in object
+//if no, store obj[arr[i]]=i;
+// if yes return,the value of the element in the obj and the current index
 
 const twoSum = (arr, target) => {
   let map = {};
@@ -28,11 +34,12 @@ const trivialTwoSum = (arr, target) => {
 const anotherTwoSum = (arr, target) => {
   let hasMap = {};
   for (let i = 0; i < arr.length; i++) {
+    hasMap[arr[i]] = i;
     let complement = target - arr[i];
     if (hasMap[complement] !== undefined) {
       return [hasMap[complement], i];
     }
-    hasMap[arr[i]] = i;
   }
 };
-console.log(anotherTwoSum([1, 2, 3, 4, 5, 6], 11));
+
+console.log(anotherTwoSum([4, 8, 12, 16, 20], 36));
