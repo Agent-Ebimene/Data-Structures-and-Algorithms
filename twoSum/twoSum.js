@@ -24,9 +24,15 @@ const trivialTwoSum = (arr, target) => {
   }
 };
 
-console.log(twoSum([2, 7, 11, 15], 17));
-console.log(trivialTwoSum([2, 7, 11, 15], 26));
-
-// Analysis of trivial solution
-//i = 0:2;
-// j=1:7=> 7+2!==26; j=11
+// solution of storing array elements and comparing with complement
+const anotherTwoSum = (arr, target) => {
+  let hasMap = {};
+  for (let i = 0; i < arr.length; i++) {
+    let complement = target - arr[i];
+    if (hasMap[complement] !== undefined) {
+      return [hasMap[complement], i];
+    }
+    hasMap[arr[i]] = i;
+  }
+};
+console.log(anotherTwoSum([1, 2, 3, 4, 5, 6], 11));
