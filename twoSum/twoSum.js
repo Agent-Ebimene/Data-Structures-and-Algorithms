@@ -30,7 +30,7 @@ const trivialTwoSum = (arr, target) => {
   }
 };
 
-// solution of storing array elements and comparing with complement
+//Solution of storing array elements and comparing with complement
 const anotherTwoSum = (arr, target) => {
   let hasMap = {};
   for (let i = 0; i < arr.length; i++) {
@@ -43,3 +43,14 @@ const anotherTwoSum = (arr, target) => {
 };
 
 console.log(anotherTwoSum([4, 8, 12, 16, 20], 36));
+
+function twoSum(arr, target) {
+  let map = {};
+  for (let i = 0; i < arr.length; i++) {
+    map[arr[i]] = i;
+    let complement = target - arr[i];
+    if (map[complement] !== undefined) {
+      return [map[complement], i];
+    }
+  }
+}
