@@ -2,7 +2,7 @@
 // store the current element in the object
 // create a variable called difference
 // check if diff.is in object
-// if no,continue iteration
+// if no,start process again
 // if yes return the value of diff and the current index.
 
 // OR
@@ -34,11 +34,11 @@ const trivialTwoSum = (arr, target) => {
 const anotherTwoSum = (arr, target) => {
   let hasMap = {};
   for (let i = 0; i < arr.length; i++) {
-    hasMap[arr[i]] = i;
     let complement = target - arr[i];
     if (hasMap[complement] !== undefined) {
       return [hasMap[complement], i];
     }
+    hasMap[arr[i]] = i;
   }
 };
 
