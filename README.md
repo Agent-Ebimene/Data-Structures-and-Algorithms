@@ -8,6 +8,6 @@ Queue
 Set
 Hash Table
 Graph
-Trie
+Tree
 
 ### I will transfer my intense love for Mathematics to explore these various data structures in Javascript
