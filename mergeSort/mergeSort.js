@@ -1,16 +1,14 @@
-//This algorithm combines two major ideas for its implementation
-//A helper merge function and sorting
-
-function merge(left, right) {
-  let sortedArr = [];
-  while (left.length && right.length) {
-    if (left[0] < right[0]) {
-      sortedArr.push(left.shift());
+function merge_Arrays(left_sub_array, right_sub_array) {
+  // left_sub_array and right_sub_array must be sorted
+  let array = [];
+  while (left_sub_array.length && right_sub_array.length) {
+    if (left_sub_array[0] <= right_sub_array[0]) {
+      array.push(left_sub_array.shift());
     } else {
-      sortedArr.push(right.push(right.shift()));
+      array.push(right_sub_array.shift());
     }
   }
-  return [...sortedArr, ...left, ...right];
+  return [...array, ...left_sub_array, ...right_sub_array];
 }
 
-console.log([4, 5, 6, 7], [3, 0, 10, 12]);
+console.log(merge_Arrays([2, 4], [1, 5]));
