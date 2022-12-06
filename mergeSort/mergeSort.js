@@ -11,4 +11,14 @@ function merge_Arrays(left_sub_array, right_sub_array) {
   return [...array, ...left_sub_array, ...right_sub_array];
 }
 
-console.log(merge_Arrays([2, 4], [1, 5]));
+function mergeSort(arr) {
+  if (arr.length <= 1) {
+    return arr;
+  }
+  let mid = Math.floor(arr.length) / 2;
+  let leftArr = arr.slice(0, mid);
+  let rightArr = arr.slice(mid);
+  return merge_Arrays(mergeSort(leftArr), mergeSort(rightArr));
+}
+
+console.log(mergeSort([2, 34, 0, 1, 8, 12]));
